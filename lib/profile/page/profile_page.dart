@@ -1,4 +1,3 @@
-
 import 'package:auth/profile/model/user.dart';
 import 'package:auth/profile/utils/user_preferences.dart';
 import 'package:auth/profile/widget/appbar_widget.dart';
@@ -7,7 +6,6 @@ import 'package:auth/profile/widget/numbers_widget.dart';
 import 'package:auth/profile/widget/profile_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 
 class ProfilePage extends StatefulWidget {
   @override
