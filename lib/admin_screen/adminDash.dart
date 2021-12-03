@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../RBAC/usrmgnt.dart';
 
-class AdminScreen extends StatefulWidget {
-  const AdminScreen({Key key}) : super(key: key);
+class AdminDash extends StatefulWidget {
+  const AdminDash({Key key}) : super(key: key);
 
   @override
-  _AdminScreenState createState() => _AdminScreenState();
+  _AdminDashState createState() => _AdminDashState();
 }
 
-class _AdminScreenState extends State<AdminScreen> {
+class _AdminDashState extends State<AdminDash> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

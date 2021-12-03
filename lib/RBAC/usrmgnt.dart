@@ -1,4 +1,4 @@
-import 'package:auth/admin_screen/adminonly.dart';
+import 'package:auth/admin_screen/adminDash.dart';
 import 'package:auth/common/LoginScreen.dart';
 import 'package:auth/common/ProfileScreen.dart';
 import 'package:auth/student_screen/StudentDash.dart';
@@ -40,7 +40,7 @@ class UserManagement {
     if (document.exists) {
       if (document.data()['role'] == "admin") {
         Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const AdminScreen()));
+            MaterialPageRoute(builder: (context) => const AdminDash()));
       }
       if (document.data()['role'] == "teacher") {
         Navigator.push(context,
