@@ -9,14 +9,14 @@
 // final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 // var name = '';
 
-// class DashScreen extends StatefulWidget {
-//   DashScreen({Key key}) : super(key: key);
+// class DashProfile extends StatefulWidget {
+//   DashProfile({Key key}) : super(key: key);
 
 //   @override
-//   _DashScreenState createState() => _DashScreenState();
+//   _DashProfileState createState() => _DashProfileState();
 // }
 
-// class _DashScreenState extends State<DashScreen> {
+// class _DashProfileState extends State<DashProfile> {
 //   @override
 //   void initState() {
 //     getUser();
