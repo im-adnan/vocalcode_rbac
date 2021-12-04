@@ -29,7 +29,7 @@ class UserManagement {
   }
 
   authorizeAccess(BuildContext context) async {
-    final User user = FirebaseAuth.instance.currentUser;
+    final User user = _auth.currentUser;
     final uid = user.uid;
 
     final DocumentSnapshot<Map<String, dynamic>> document =
@@ -49,12 +49,12 @@ class UserManagement {
       } else {
         // Navigator.push(
         //     context, MaterialPageRoute(builder: (context) => LoginScreen()));
-        print('not authorize');
+        // print('not authorize');
       }
     }
   }
 
-  signOut(BuildContext context) async {
+  signOut(BuildContext context) {
     //redirect
     _auth.signOut().then((value) => Navigator.push(
         context, MaterialPageRoute(builder: (context) => LoginScreen())));
