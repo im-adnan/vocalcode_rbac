@@ -1,12 +1,12 @@
 // ignore_for_file: file_names
 
+import 'package:auth/RBAC/usrmgnt.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:auth/common/RegisterScreen.dart';
-import 'package:auth/common/DashScreen.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -42,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
         Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
-            builder: (BuildContext context) => DashScreen(),
+            builder: (BuildContext context) => UserManagement().handleAuth(),
           ),
           (route) => false,
         );
@@ -249,7 +249,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                                     MaterialPageRoute(
                                                       builder: (BuildContext
                                                               context) =>
-                                                          DashScreen(),
+                                                          UserManagement().handleAuth(),
                                                     ),
                                                     (route) => false,
                                                   )
@@ -385,7 +385,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
-                        builder: (BuildContext context) => DashScreen(),
+                        builder: (BuildContext context) => UserManagement().handleAuth(),
                       ),
                       (route) => false,
                     )

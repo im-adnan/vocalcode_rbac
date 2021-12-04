@@ -1,6 +1,5 @@
 import 'package:auth/admin_screen/adminDash.dart';
 import 'package:auth/common/LoginScreen.dart';
-import 'package:auth/common/ProfileScreen.dart';
 import 'package:auth/student_screen/StudentDash.dart';
 import 'package:auth/teacher_screen/teacherDash.dart';
 import 'package:flutter/material.dart';
@@ -8,8 +7,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flutter/widgets.dart';
-
-import '../common/allusers.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 var name = '';
@@ -50,10 +47,10 @@ class UserManagement {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => StudentDash()));
       } else {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const AllUserPage()));
+        // Navigator.push(
+        //     context, MaterialPageRoute(builder: (context) => LoginScreen()));
+        print('not authorize');
       }
-      print('not authorize');
     }
   }
 

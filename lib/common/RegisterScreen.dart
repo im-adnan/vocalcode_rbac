@@ -1,10 +1,10 @@
 // ignore_for_file: file_names
 
+import 'package:auth/RBAC/usrmgnt.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
-import 'package:auth/common/DashScreen.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -258,7 +258,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                                     MaterialPageRoute(
                                                       builder: (BuildContext
                                                               context) =>
-                                                          DashScreen(),
+                                                          UserManagement()
+                                                              .handleAuth(),
                                                     ),
                                                     (route) => false,
                                                   )
@@ -390,7 +391,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (BuildContext context) =>
-                                      DashScreen(),
+                                      UserManagement().handleAuth(),
                                 ),
                                 (route) => false,
                               );
