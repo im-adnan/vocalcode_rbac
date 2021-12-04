@@ -1,15 +1,15 @@
 // ignore_for_file: file_names
 
 import 'package:auth/profile/page/profile_page.dart';
-import 'package:auth/common/PaymentScreen.dart';
 import 'package:flutter/material.dart';
 import '../event_screen/CalenderScreen.dart';
-import 'ChatScreen.dart';
-import 'FeedScreen.dart';
-import 'HomeScreen.dart';
-import '../common/ProfileScreen.dart';
+import '../student_screen/ChatScreen.dart';
+import '../student_screen/FeedScreen.dart';
+import '../student_screen/HomeScreen.dart';
 
 class DashScreen extends StatefulWidget {
+  const DashScreen({Key key}) : super(key: key);
+
   @override
   _DashScreenState createState() => _DashScreenState();
 }
@@ -40,7 +40,7 @@ class _DashScreenState extends State<DashScreen> {
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
+            label: 'Commom Home',
             backgroundColor: Colors.blue,
           ),
           BottomNavigationBarItem(

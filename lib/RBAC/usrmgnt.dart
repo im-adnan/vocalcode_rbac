@@ -9,7 +9,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flutter/widgets.dart';
 
-import 'allusers.dart';
+import '../common/allusers.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 var name = '';
@@ -39,7 +39,7 @@ class UserManagement {
         await FirebaseFirestore.instance.collection("users").doc(uid).get();
     if (document.exists) {
       if (document.data()['role'] == "admin") {
-        Navigator.push(context,
+        Navigator?.push(context,
             MaterialPageRoute(builder: (context) => const AdminDash()));
       }
       if (document.data()['role'] == "teacher") {
