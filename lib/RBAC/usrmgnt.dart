@@ -7,6 +7,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/widgets.dart';
 
+import '../onboardinScreen.dart';
+
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final currentUser = _auth.currentUser;
 
@@ -21,7 +23,8 @@ class UserManagement {
         if (snapshot.hasData == authorizeAccess(context)) {
           return UserManagement().authorizeAccess(context);
         } else {
-          return LoginScreen();
+          // return LoginScreen();
+          return OnboardingScreen();
         }
       },
     );
