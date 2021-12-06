@@ -1,7 +1,8 @@
+import 'package:auth/common/LoginScreen.dart';
+import 'package:auth/skill/components/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:skill/components/rounded_button.dart';
-import 'package:skill/screens/login_screen.dart';
+
 
 class OnBoardingScreen extends StatelessWidget {
   @override

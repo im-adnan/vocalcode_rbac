@@ -1,8 +1,9 @@
+import 'package:auth/common/LoginScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:skill/screens/login_screen.dart';
-import 'package:skill/screens/web_screen.dart';
 import 'package:device_info/device_info.dart';
+
+import 'web_screen.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -11,7 +12,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-  late String uid;
+  String uid;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,6 +84,6 @@ class _HomeState extends State<Home> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    uid = FirebaseAuth.instance.currentUser!.uid;
+    uid = FirebaseAuth.instance.currentUser.uid;
   }
 }
