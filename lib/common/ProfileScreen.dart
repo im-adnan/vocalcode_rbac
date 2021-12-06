@@ -1,9 +1,9 @@
 // ignore_for_file: file_names
 
+import 'package:auth/RBAC/usrmgnt.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:auth/common/LoginScreen.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -50,7 +50,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ElevatedButton(
               onPressed: () => {
                     //sign out
-                    signOut()
+                    // _auth.signOut(),
+                    UserManagement().signOut(context),
                   },
               child: Text('Sign out'))
         ],
@@ -78,9 +79,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
-  signOut() {
-    //redirect
-    _auth.signOut().then((value) => Navigator.pushReplacement(context,
-        MaterialPageRoute(builder: (BuildContext context) => LoginScreen())));
-  }
+//   signOut() {
+//     //redirect
+//     _auth.signOut().then((value) => Navigator.pushReplacement(context,
+//         MaterialPageRoute(builder: (BuildContext context) => LoginScreen())));
+//   }
+// }
 }

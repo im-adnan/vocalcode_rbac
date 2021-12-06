@@ -33,22 +33,22 @@ class _LoginScreenState extends State<LoginScreen> {
   var verificationCode = '';
 
   //Form controllers
-  @override
-  void initState() {
-    super.initState();
-    // without following line exception occurs ""setState() or markNeedsBuild() called during build.
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (_auth.currentUser != null) {
-        Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(
-            builder: (BuildContext context) => UserManagement().handleAuth(),
-          ),
-          (route) => false,
-        );
-      }
-    });
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   // without following line exception occurs ""setState() or markNeedsBuild() called during build.
+  //   WidgetsBinding.instance.addPostFrameCallback((_) {
+  //     if (_auth.currentUser != null) {
+  //       Navigator.pushAndRemoveUntil(
+  //         context,
+  //         MaterialPageRoute(
+  //           builder: (BuildContext context) => UserManagement().handleAuth(),
+  //         ),
+  //         (route) => false,
+  //       );
+  //     }
+  //   });
+  // }
 
   @override
   void dispose() {
@@ -249,7 +249,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                                     MaterialPageRoute(
                                                       builder: (BuildContext
                                                               context) =>
-                                                          UserManagement().handleAuth(),
+                                                          UserManagement()
+                                                              .handleAuth(),
                                                     ),
                                                     (route) => false,
                                                   )
@@ -385,7 +386,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
-                        builder: (BuildContext context) => UserManagement().handleAuth(),
+                        builder: (BuildContext context) =>
+                            UserManagement().handleAuth(),
                       ),
                       (route) => false,
                     )

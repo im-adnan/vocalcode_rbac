@@ -22,8 +22,8 @@ class _StudentDashState extends State<StudentDash> {
     FeedScreen(),
     CalenderScreen(),
     ChatScreen(),
-    // ProfileScreen(),
-    ProfilePage(),
+    const ProfileScreen(),
+    // ProfilePage(),
   ];
 
   @override
