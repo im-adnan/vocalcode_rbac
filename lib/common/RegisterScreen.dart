@@ -75,10 +75,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           decoration: const InputDecoration(
                               floatingLabelBehavior:
                                   FloatingLabelBehavior.never,
-                              labelText: 'Name'),
+                              labelText: 'displayName'),
                           validator: (value) {
                             if (value.isEmpty) {
-                              return 'Please enter a name';
+                              return 'Please enter a displayName';
                             }
                           },
                         ),
@@ -228,9 +228,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                                           _auth.currentUser.uid)
                                                       .set(
                                                           {
-                                                        'name': nameController
-                                                            .text
-                                                            .trim(),
+                                                        'displayName':
+                                                            nameController.text
+                                                                .trim(),
                                                         'cellnumber':
                                                             cellnumberController
                                                                 .text
@@ -372,11 +372,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       .collection('users')
                       .doc(_auth.currentUser.uid)
                       .set({
-                        'name': nameController.text.trim(),
+                        'displayName': nameController.text.trim(),
                         'cellnumber': cellnumberController.text.trim(),
                         'idUser': _auth.currentUser.uid,
-                        'userRole': 'User',
-                        'lastMessageTime': DateTime.now(),
+                        'userRole': 'Student',
+                        'registrationTime': DateTime.now(),
                         'urlAvatar': '',
                       }, SetOptions(merge: true))
                       .then((value) => {

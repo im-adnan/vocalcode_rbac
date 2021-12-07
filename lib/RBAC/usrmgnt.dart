@@ -36,21 +36,21 @@ class UserManagement {
       final DocumentSnapshot<Map<String, dynamic>> doc =
           await FirebaseFirestore.instance.collection('users').doc(uid).get();
       final String userRole = doc.data()['userRole'];
-      if (userRole == 'admin') {
+      if (userRole == 'Admin') {
         Navigator?.push(
           context,
           MaterialPageRoute(
             builder: (context) => AdminDash(),
           ),
         );
-      } else if (userRole == 'teacher') {
+      } else if (userRole == 'Teacher') {
         Navigator?.push(
           context,
           MaterialPageRoute(
             builder: (context) => TeacherDash(),
           ),
         );
-      } else if (userRole == 'student') {
+      } else if (userRole == 'Student') {
         Navigator?.push(
           context,
           MaterialPageRoute(
@@ -59,7 +59,9 @@ class UserManagement {
         );
       }
     } else {
-      return UserManagement().signOut(context);
+      //following line causing  LoginScreeen Loop
+      // return UserManagement().signOut(context);
+      return const SnackBar(content: Text('Please Login'));
     }
     //   final DocumentSnapshot<Map<String, dynamic>> document =
     //       await FirebaseFirestore.instance
