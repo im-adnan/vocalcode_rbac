@@ -35,22 +35,22 @@ class UserManagement {
       final uid = user.uid;
       final DocumentSnapshot<Map<String, dynamic>> doc =
           await FirebaseFirestore.instance.collection('users').doc(uid).get();
-      final String role = doc.data()['role'];
-      if (role == 'admin') {
+      final String userRole = doc.data()['userRole'];
+      if (userRole == 'admin') {
         Navigator?.push(
           context,
           MaterialPageRoute(
             builder: (context) => AdminDash(),
           ),
         );
-      } else if (role == 'teacher') {
+      } else if (userRole == 'teacher') {
         Navigator?.push(
           context,
           MaterialPageRoute(
             builder: (context) => TeacherDash(),
           ),
         );
-      } else if (role == 'student') {
+      } else if (userRole == 'student') {
         Navigator?.push(
           context,
           MaterialPageRoute(
@@ -67,15 +67,15 @@ class UserManagement {
     //           .doc(_auth.currentUser.uid != null ? _auth.currentUser.uid : '')
     //           .get();
     //   if (document.exists) {
-    //     if (document.data()['role'] == "admin") {
+    //     if (document.data()['userRole'] == "admin") {
     //       Navigator?.push(
     //           context, MaterialPageRoute(builder: (context) => AdminDash()));
     //     }
-    //     if (document.data()['role'] == "teacher") {
+    //     if (document.data()['userRole'] == "teacher") {
     //       Navigator.push(
     //           context, MaterialPageRoute(builder: (context) => TeacherDash()));
     //     }
-    //     if (document.data()['role'] == "student") {
+    //     if (document.data()['userRole'] == "student") {
     //       Navigator.push(
     //           context, MaterialPageRoute(builder: (context) => StudentDash()));
     //     } else {
