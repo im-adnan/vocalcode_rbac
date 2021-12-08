@@ -34,7 +34,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         mainAxisSize: MainAxisSize.max,
         children: [
           Text(
-            'Welcome ' +
+            'GooodBye' +
                 (_auth.currentUser.displayName != null
                     ? _auth.currentUser.displayName
                     : ''),
