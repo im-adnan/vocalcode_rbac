@@ -9,14 +9,14 @@ final FirebaseAuth _auth = FirebaseAuth.instance;
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 var name = '';
 
-class UserList extends StatefulWidget {
-  const UserList({Key key}) : super(key: key);
+class StudentsList extends StatefulWidget {
+  const StudentsList({Key key}) : super(key: key);
 
   @override
-  _UserListState createState() => _UserListState();
+  _StudentsListState createState() => _StudentsListState();
 }
 
-class _UserListState extends State<UserList> {
+class _StudentsListState extends State<StudentsList> {
   void initState() {
     super.initState();
     // getUser();
@@ -27,10 +27,10 @@ class _UserListState extends State<UserList> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text('User List'),
+        title: Text('Students List'),
       ),
       body: StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance.collection("users").snapshots(),
+        stream: FirebaseFirestore.instance.collection("users").where('userRole', isEqualTo: 'Student').snapshots(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return Text('Something went wrong');

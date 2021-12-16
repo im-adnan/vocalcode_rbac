@@ -1,10 +1,8 @@
 // ignore_for_file: file_names
 
-import 'package:auth/common/usrList.dart';
-import 'package:auth/common/studentList.dart';
-import 'package:auth/student_screen/ChatScreen.dart';
+import 'package:auth/common/studentsList.dart';
+import 'package:auth/common/teacherList.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_calendar/flutter_clean_calendar.dart';
 
 import 'CoursesMaker.dart';
 import '../common/ProfileScreen.dart';
@@ -18,8 +16,8 @@ class _AdminDashState extends State<AdminDash> {
   int currentIndex = 0;
   final screens = [
     CourseMaker(),
-    StudentList(),
-    UserList(),
+    StudentsList(),
+    TeachersList(),
     // Calendar(),
     // ChatScreen(),
     ProfileScreen()
