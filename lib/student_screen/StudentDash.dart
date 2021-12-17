@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 
+import 'package:auth/common/teacherList.dart';
 import 'package:auth/profile/page/profile_page.dart';
 import 'package:auth/common/PaymentScreen.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,8 @@ class _StudentDashState extends State<StudentDash> {
     HomeScreen(),
     // PaymentScreen(),
     FeedScreen(),
-    CalenderScreen(),
+    TeachersList(),
+    // CalenderScreen(),
     ChatScreen(),
     const ProfileScreen(),
     // ProfilePage(),

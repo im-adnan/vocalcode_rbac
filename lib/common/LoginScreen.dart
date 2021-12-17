@@ -66,6 +66,8 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
         key: _scaffoldKey,
         appBar: new AppBar(
+                  automaticallyImplyLeading: false,
+
           title: Text('Login Screen'),
         ),
         body: ListView(children: [

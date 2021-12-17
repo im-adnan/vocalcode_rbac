@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 
+import 'package:auth/common/studentsList.dart';
 import 'package:auth/profile/page/profile_page.dart';
 import 'package:flutter/material.dart';
 import '../event_screen/CalenderScreen.dart';
@@ -16,7 +17,7 @@ class TeacherDash extends StatefulWidget {
 class _TeacherDashState extends State<TeacherDash> {
   int currentIndex = 0;
   final screens = [
-    HomeScreen(),
+    const StudentsList(),
     FeedScreen(),
     CalenderScreen(),
     ChatScreen(),
@@ -37,8 +38,8 @@ class _TeacherDashState extends State<TeacherDash> {
         onTap: (index) => setState(() => currentIndex = index),
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Teacher Home',
+            icon: Icon(Icons.child_care),
+            label: 'Students',
             backgroundColor: Colors.blue,
           ),
           BottomNavigationBarItem(

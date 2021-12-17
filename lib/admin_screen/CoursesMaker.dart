@@ -3,117 +3,103 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class CourseMaker extends StatefulWidget {
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key key, this.title}) : super(key: key);
+
+  final String title;
+
   @override
-  _CoursesListState createState() => _CoursesListState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _CoursesListState extends State<CourseMaker> {
-  List Courses = List.empty();
+class _MyHomePageState extends State<MyHomePage> {
+  List todos = List.empty();
   String title = "";
   String description = "";
-
   @override
-  // void initState() {
-  //   super.initState();
-  //   Courses = ["Hello", "Hey There"];
-  // }
+  void initState() {
+    super.initState();
+    todos = ["Hello", "Hey There"];
+  }
 
-  createCourses() {
+  createToDo() {
     DocumentReference documentReference =
-        FirebaseFirestore.instance.collection("Courses").doc(title);
+        FirebaseFirestore.instance.collection("MyTodos").doc(title);
 
-    Map<String, String> CourseMaker = {
-      "CoursesTitle": title,
-      "CoursesDesc": description
+    Map<String, String> todoList = {
+      "todoTitle": title,
+      "todoDesc": description
     };
 
     documentReference
-        .set(CourseMaker)
+        .set(todoList)
         .whenComplete(() => print("Data stored successfully"));
   }
 
-  deleteCourses(item) {
+  deleteTodo(item) {
     DocumentReference documentReference =
-        FirebaseFirestore.instance.collection("Courses").doc(item);
+        FirebaseFirestore.instance.collection("MyTodos").doc(item);
 
     documentReference
         .delete()
         .whenComplete(() => print("deleted successfully"));
   }
 
-  updateCourses(item) {
-    DocumentReference documentReference =
-        FirebaseFirestore.instance.collection("Courses").doc(item);
-
-    Map<String, String> CourseMaker = {
-      "CoursesTitle": title,
-      "CoursesDesc": description
-    };
-
-    documentReference
-        .update(CourseMaker)
-        .whenComplete(() => print("Data updated successfully"));
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Text('Firebase Courses'),
-      ),
+                automaticallyImplyLeading: false,
+
+          // title: Text(widget.title),
+          ),
       body: StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance.collection("Courses").snapshots(),
+        stream: FirebaseFirestore.instance.collection("MyTodos").snapshots(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
-            return Text('Something went wrong');
+            return const Text('Something went wrong');
           } else if (snapshot.hasData || snapshot.data != null) {
             return ListView.builder(
-              shrinkWrap: false,
-              itemCount: snapshot.data?.docs.length,
-              itemBuilder: (BuildContext context, int index) {
-                QueryDocumentSnapshot<Object> documentSnapshot =
-                    snapshot.data?.docs[index];
-                return Dismissible(
-                  key: Key(index.toString()),
-                  child: Card(
-                    elevation: 4,
-                    child: ListTile(
-                      title: Text((documentSnapshot != null)
-                          ? (documentSnapshot["Title"])
-                          : ""),
-                      subtitle: Text((documentSnapshot != null)
-                          ? ((documentSnapshot["Desciption"] != null)
-                              ? documentSnapshot["Description"]
-                              : "")
-                          : ""),
-                      trailing: IconButton(
-                        icon: const Icon(Icons.delete),
-                        color: Colors.red,
-                        onPressed: () {
-                          setState(
-                            () {
-                              //Coursess.removeAt(index);
-                              deleteCourses((documentSnapshot != null)
-                                  ? (documentSnapshot["Title"])
-                                  : "");
+                shrinkWrap: true,
+                itemCount: snapshot.data?.docs?.length,
+                itemBuilder: (BuildContext context, int index) {
+                  QueryDocumentSnapshot<Object> documentSnapshot =
+                      snapshot.data?.docs[index];
+                  return Dismissible(
+                      key: Key(index.toString()),
+                      child: Card(
+                        elevation: 4,
+                        child: ListTile(
+                          title: Text((documentSnapshot != null)
+                              ? (documentSnapshot["todoTitle"])
+                              : ""),
+                          subtitle: Text((documentSnapshot != null)
+                              ? ((documentSnapshot["todoDesc"] != null)
+                                  ? documentSnapshot["todoDesc"]
+                                  : "")
+                              : ""),
+                          trailing: IconButton(
+                            icon: const Icon(Icons.delete),
+                            color: Colors.red,
+                            onPressed: () {
+                              setState(() {
+                                //todos.removeAt(index);
+                                deleteTodo((documentSnapshot != null)
+                                    ? (documentSnapshot["todoTitle"])
+                                    : "");
+                              });
                             },
-                          );
-                        },
-                      ),
-                    ),
-                  ),
-                );
-              },
-            );
+                          ),
+                        ),
+                      ));
+                });
           }
           return const Center(
             child: CircularProgressIndicator(
-                // valueColor: AlwaysStoppedAnimation<Color>(
-                // Colors.red,
-                // ),
-                ),
+              valueColor: AlwaysStoppedAnimation<Color>(
+                Colors.red,
+              ),
+            ),
           );
         },
       ),
@@ -125,8 +111,8 @@ class _CoursesListState extends State<CourseMaker> {
                 return AlertDialog(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)),
-                  title: const Text("Add Course"),
-                  content: Container(
+                  title: const Text("Add Todo"),
+                  content: SizedBox(
                     width: 400,
                     height: 100,
                     child: Column(
@@ -148,8 +134,8 @@ class _CoursesListState extends State<CourseMaker> {
                     TextButton(
                         onPressed: () {
                           setState(() {
-                            //Coursess.add(title);
-                            createCourses();
+                            //todos.add(title);
+                            createToDo();
                           });
                           Navigator.of(context).pop();
                         },
@@ -160,7 +146,7 @@ class _CoursesListState extends State<CourseMaker> {
         },
         child: const Icon(
           Icons.add,
-          // color: Colors.black,
+          color: Colors.white,
         ),
       ),
     );

@@ -55,6 +55,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
+                  automaticallyImplyLeading: false,
+
           title: const Text('Register new user'),
         ),
         body: ListView(children: [

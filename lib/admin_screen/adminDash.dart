@@ -15,7 +15,8 @@ class AdminDash extends StatefulWidget {
 class _AdminDashState extends State<AdminDash> {
   int currentIndex = 0;
   final screens = [
-    CourseMaker(),
+    // CourseMaker(),
+    MyHomePage(),
     StudentsList(),
     TeachersList(),
     // Calendar(),
