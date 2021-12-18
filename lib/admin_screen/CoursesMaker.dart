@@ -3,42 +3,42 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key key, this.title}) : super(key: key);
+class MyCourses extends StatefulWidget {
+  const MyCourses({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MyCourses> createState() => _MyCoursesState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  List todos = List.empty();
+class _MyCoursesState extends State<MyCourses> {
+  List courses = List.empty();
   String title = "";
   String description = "";
   @override
   void initState() {
     super.initState();
-    todos = ["Hello", "Hey There"];
+    courses = ["Hello", "Hey There"];
   }
 
-  createToDo() {
+  createCourse() {
     DocumentReference documentReference =
-        FirebaseFirestore.instance.collection("MyTodos").doc(title);
+        FirebaseFirestore.instance.collection("MyCourses").doc(title);
 
-    Map<String, String> todoList = {
-      "todoTitle": title,
-      "todoDesc": description
+    Map<String, String> courseList = {
+      "courseTitle": title,
+      "courseDesc": description
     };
 
     documentReference
-        .set(todoList)
+        .set(courseList)
         .whenComplete(() => print("Data stored successfully"));
   }
 
-  deleteTodo(item) {
+  deleteCourse(item) {
     DocumentReference documentReference =
-        FirebaseFirestore.instance.collection("MyTodos").doc(item);
+        FirebaseFirestore.instance.collection("MyCourses").doc(item);
 
     documentReference
         .delete()
@@ -49,12 +49,11 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-                automaticallyImplyLeading: false,
-
-          // title: Text(widget.title),
-          ),
+        automaticallyImplyLeading: false,
+        title: const Text('MyCourses'),
+      ),
       body: StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance.collection("MyTodos").snapshots(),
+        stream: FirebaseFirestore.instance.collection("MyCourses").snapshots(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return const Text('Something went wrong');
@@ -71,11 +70,11 @@ class _MyHomePageState extends State<MyHomePage> {
                         elevation: 4,
                         child: ListTile(
                           title: Text((documentSnapshot != null)
-                              ? (documentSnapshot["todoTitle"])
+                              ? (documentSnapshot["courseTitle"])
                               : ""),
                           subtitle: Text((documentSnapshot != null)
-                              ? ((documentSnapshot["todoDesc"] != null)
-                                  ? documentSnapshot["todoDesc"]
+                              ? ((documentSnapshot["courseDesc"] != null)
+                                  ? documentSnapshot["courseDesc"]
                                   : "")
                               : ""),
                           trailing: IconButton(
@@ -83,9 +82,9 @@ class _MyHomePageState extends State<MyHomePage> {
                             color: Colors.red,
                             onPressed: () {
                               setState(() {
-                                //todos.removeAt(index);
-                                deleteTodo((documentSnapshot != null)
-                                    ? (documentSnapshot["todoTitle"])
+                                //courses.removeAt(index);
+                                deleteCourse((documentSnapshot != null)
+                                    ? (documentSnapshot["courseTitle"])
                                     : "");
                               });
                             },
@@ -111,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 return AlertDialog(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)),
-                  title: const Text("Add Todo"),
+                  title: const Text("Add Course"),
                   content: SizedBox(
                     width: 400,
                     height: 100,
@@ -134,8 +133,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     TextButton(
                         onPressed: () {
                           setState(() {
-                            //todos.add(title);
-                            createToDo();
+                            //courses.add(title);
+                            createCourse();
                           });
                           Navigator.of(context).pop();
                         },
