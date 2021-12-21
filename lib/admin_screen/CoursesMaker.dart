@@ -16,11 +16,11 @@ class _MyCoursesState extends State<MyCourses> {
   List courses = List.empty();
   String title = "";
   String description = "";
-  @override
-  void initState() {
-    super.initState();
-    courses = ["Hello", "Hey There"];
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   // courses = ["Hello", "Hey There"];
+  // }
 
   createCourse() {
     DocumentReference documentReference =
