@@ -1,4 +1,6 @@
-# auth
+# VocalCode
+
+This is a very early release
 
 A new Flutter project.
 
