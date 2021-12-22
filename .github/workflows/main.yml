@@ -3,12 +3,13 @@ on:
     branches:
       - main
       - master
-      - 11_building-_homepage
+      
   push:
     branches:
       - main
       - master
       - develop
+      - 11_building-_homepage
 name: "Build & Release"
 jobs:
   build:
