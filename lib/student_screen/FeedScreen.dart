@@ -10,7 +10,7 @@ class FeedScreen extends StatelessWidget {
         ),
         body: Center(
           child: Text(
-            'Feeds',
+            'Your Feeds will be here',
             style: TextStyle(fontSize: 60),
           ),
         ),

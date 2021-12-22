@@ -15,7 +15,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   MaterialBanner _showMaterialBanner(BuildContext context) {
     return MaterialBanner(
-        content: Text('Hello, I am a Material Banner'),
+        content: Text(
+            'Hello, I am a Banner Soon I will be showing you Daily Quotes'),
         leading: Icon(Icons.error),
         padding: EdgeInsets.all(15),
         backgroundColor: Colors.lightGreenAccent,
@@ -45,6 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text('Home Screen'),
       ),
       body: Center(
@@ -52,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'You have pushed the button to see MaterialBanner:',
+              'You have to  pushed the button to see Banner:',
               style:
                   TextStyle(color: Colors.indigo, fontWeight: FontWeight.bold),
             ),

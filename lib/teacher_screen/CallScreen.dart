@@ -2,14 +2,14 @@
 
 import 'package:flutter/material.dart';
 
-class ChatScreen extends StatelessWidget {
+class CallScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: Text('Chat'),
+          title: Text('Call'),
         ),
         body: Center(
-          child: Text('Chat', style: TextStyle(fontSize: 60)),
+          child: Text('Calls Coming Soon', style: TextStyle(fontSize: 60)),
         ),
       );
 }

@@ -5,7 +5,7 @@ import 'package:auth/profile/page/profile_page.dart';
 import 'package:auth/common/PaymentScreen.dart';
 import 'package:flutter/material.dart';
 import '../event_screen/CalenderScreen.dart';
-import 'ChatScreen.dart';
+import 'CallScreen.dart';
 import 'FeedScreen.dart';
 import 'HomeScreen.dart';
 import '../common/ProfileScreen.dart';
@@ -23,7 +23,7 @@ class _StudentDashState extends State<StudentDash> {
     FeedScreen(),
     TeachersList(),
     // CalenderScreen(),
-    ChatScreen(),
+    CallScreen(),
     const ProfileScreen(),
     // ProfilePage(),
   ];
@@ -56,8 +56,8 @@ class _StudentDashState extends State<StudentDash> {
             backgroundColor: Colors.orange,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
-            label: 'chat',
+            icon: Icon(Icons.call_made),
+            label: 'Call',
             backgroundColor: Colors.red,
           ),
           BottomNavigationBarItem(
