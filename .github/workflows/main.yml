@@ -3,6 +3,7 @@ on:
     branches:
       - main
       - master
+      - 11_building-_homepage
   push:
     branches:
       - main
