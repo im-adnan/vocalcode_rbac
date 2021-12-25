@@ -9,14 +9,14 @@ final FirebaseAuth _auth = FirebaseAuth.instance;
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 var name = '';
 
-class CoursesList extends StatefulWidget {
-  const CoursesList({Key key}) : super(key: key);
+class StudentHome extends StatefulWidget {
+  const StudentHome({Key key}) : super(key: key);
 
   @override
-  _CoursesListState createState() => _CoursesListState();
+  _StudentHomeState createState() => _StudentHomeState();
 }
 
-class _CoursesListState extends State<CoursesList> {
+class _StudentHomeState extends State<StudentHome> {
   void initState() {
     super.initState();
     // getUser();

@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import '../event_screen/CalenderScreen.dart';
 import 'CallScreen.dart';
 import 'FeedScreen.dart';
-import 'HomeScreen.dart';
+import 'teacher_home.dart';
 import '../common/ProfileScreen.dart';
 
 class TeacherDash extends StatefulWidget {

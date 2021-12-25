@@ -3,7 +3,7 @@
 import 'package:auth/common/PaymentScreen.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+class TeacherHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
@@ -17,6 +17,6 @@ class HomeScreen extends StatelessWidget {
           child: new Icon(Icons.check),
           backgroundColor: new Color(0xFFE57373),
           onPressed: () {
-            return PaymentScreen();
+            // return PaymentScreen();
           }));
 }

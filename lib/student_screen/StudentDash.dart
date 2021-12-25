@@ -18,7 +18,7 @@ class StudentDash extends StatefulWidget {
 class _StudentDashState extends State<StudentDash> {
   int currentIndex = 0;
   final screens = [
-    HomeScreen(),
+    const StudentHome(),
     // PaymentScreen(),
     FeedScreen(),
     TeachersList(),
