@@ -1,45 +1,25 @@
 // ignore_for_file: file_names
 
-import 'package:auth/common/PaymentScreen.dart';
+import 'package:auth/RBAC/usrmgnt.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-class HomeScreen extends StatefulWidget {
-  HomeScreen({Key key, this.title}) : super(key: key);
+final FirebaseAuth _auth = FirebaseAuth.instance;
+final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+var name = '';
 
-  final String title;
+class CoursesList extends StatefulWidget {
+  const CoursesList({Key key}) : super(key: key);
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _CoursesListState createState() => _CoursesListState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
-  MaterialBanner _showMaterialBanner(BuildContext context) {
-    return MaterialBanner(
-        content: Text(
-            'Hello, I am a Banner Soon I will be showing you Daily Quotes'),
-        leading: Icon(Icons.error),
-        padding: EdgeInsets.all(15),
-        backgroundColor: Colors.lightGreenAccent,
-        contentTextStyle: TextStyle(
-            fontSize: 18, fontWeight: FontWeight.bold, color: Colors.indigo),
-        actions: [
-          TextButton(
-            onPressed: () {},
-            child: Text(
-              'Agree',
-              style: TextStyle(color: Colors.purple),
-            ),
-          ),
-          TextButton(
-            onPressed: () {
-              ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
-            },
-            child: Text(
-              'Cancel',
-              style: TextStyle(color: Colors.purple),
-            ),
-          ),
-        ]);
+class _CoursesListState extends State<CoursesList> {
+  void initState() {
+    super.initState();
+    // getUser();
   }
 
   @override
@@ -47,37 +27,41 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text('Home Screen'),
+        title: Text('Courses List'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have to  pushed the button to see Banner:',
-              style:
-                  TextStyle(color: Colors.indigo, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                ScaffoldMessenger.of(context)
-                  ..removeCurrentMaterialBanner()
-                  ..showMaterialBanner(_showMaterialBanner(context));
+      body: StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance.collection("MyCourses").snapshots(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return Text('Something went wrong');
+          } else if (snapshot.hasData || snapshot.data != null) {
+            return ListView.builder(
+              shrinkWrap: true,
+              itemCount: snapshot.data?.docs.length,
+              itemBuilder: (BuildContext context, int index) {
+                QueryDocumentSnapshot<Object> doc = snapshot.data?.docs[index];
+                return
+                    // ListTile(
+                    //   title: Text(doc.data()['name']),
+                    //   subtitle: Text(doc.data()['email']),
+                    // );
+                    Card(
+                  child: ListTile(
+                    leading: Image.network(doc['image'],
+                        width: 50, fit: BoxFit.fitWidth),
+                    title: Text(doc['courseTitle']),
+                    subtitle: Text(doc['courseDesc']),
+                  ),
+                );
               },
-              child: Text(
-                'Click Here',
-                style: TextStyle(color: Colors.purple),
-              ),
-              style: ElevatedButton.styleFrom(
-                primary: Colors.lightGreenAccent,
-              ),
-            ),
-          ],
-        ),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+            );
+          } else {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        },
+      ),
     );
   }
 }
